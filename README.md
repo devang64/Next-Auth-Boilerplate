@@ -33,7 +33,6 @@ NextAuth Boilerplate is a versatile and customizable authentication solution tai
 
 ### Prerequisites
 - Node.js (>=18.17)
-- Internet connection
 
 ### Installation
 
