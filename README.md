@@ -2,9 +2,6 @@
 
 NextAuth Boilerplate is a versatile and customizable authentication solution tailored for Next.js 14, offering seamless integration. This feature-rich boilerplate not only provides a secure and efficient user authentication process but also acts as a robust foundation for web applications.
 
-![Login to NextAuth App](login_nextauth_app_image_url)
-![Sign Up for NextAuth App](signup_nextauth_app_image_url)
-
 ## Key Features
 
 - **Next.js 14 Integration**: Utilize the latest features of Next.js 14 for building modern and scalable web applications with enhanced developer experiences.
