@@ -46,15 +46,9 @@ const Navbar = () => {
               <>
                 <Link
                   href="/login"
-                  className="hidden lg:block lg:text-sm lg:font-semibold lg:leading-6 lg:text-gray-900"
+                  className="hidden lg:block lg:text-sm lg:font-semibold lg:leading-6 rounded-md bg-black px-3 py-2 border border-gray-500 border-1 text-sm font-semibold text-white shadow-sm hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   Log in
-                </Link>
-                <Link
-                  href="/register"
-                  className="rounded-md bg-black px-3 py-2 border border-gray-500 border-1 text-sm font-semibold text-white shadow-sm hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                >
-                  Sign up
                 </Link>
               </>
             ) : (
