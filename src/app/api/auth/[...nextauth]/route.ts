@@ -1,12 +1,17 @@
 import NextAuth from "next-auth";
 import { Account, User as AuthUser } from "next-auth";
+import GithubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import bcrypt from "bcryptjs";
 import User from "@/models/User";
-import connect from "@/utils/db";
+import connect from "@/utils/dbConnection";
+import { pages } from "next/dist/build/templates/app-page";
 
 export const authOptions: any = {
+  // pages: {
+  //   singIn: '/login ',
+  // },
   providers: [
     CredentialsProvider({
       id: "credentials",
@@ -19,6 +24,7 @@ export const authOptions: any = {
         await connect();
         try {
           const user = await User.findOne({ email: credentials.email });
+
           if (user) {
             const isPasswordCorrect = await bcrypt.compare(
               credentials.password,
@@ -34,10 +40,9 @@ export const authOptions: any = {
       },
     }),
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_SECRET!,
+      clientId: process.env.GOOGLE_ID ?? "",
+      clientSecret: process.env.GOOGLE_SECRET ?? "",
     }),
-    // ...add more providers here
   ],
   callbacks: {
     async signIn({ user, account }: { user: AuthUser; account: Account }) {
@@ -51,7 +56,10 @@ export const authOptions: any = {
           const existingUser = await User.findOne({ email: user.email });
           if (!existingUser) {
             const newUser = new User({
+              name: user.name,
               email: user.email,
+              avatar: user.image,
+              provider: account.provider
             });
 
             await newUser.save();

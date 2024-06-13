@@ -1,5 +1,5 @@
 import User from "@/models/User";
-import connect from "@/utils/db";
+import connect from "@/utils/dbConnection";
 import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
 
@@ -18,6 +18,7 @@ export const POST = async (request: any) => {
   const newUser = new User({
     email,
     password: hashedPassword,
+    provider: 'credentials'
   });
 
   try {

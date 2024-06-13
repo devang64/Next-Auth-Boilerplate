@@ -3,8 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { getServerSession } from "next-auth";
 import SessionProvider from "@/utils/SessionProvider";
-import Navbar from "@/components/Navbar";
-import ToastProviders from "@/ToastProviders";
+import ToastProviders from "@/utils/ToastProviders";
 import img from '../../public/logo 1.png'
 
 const inter = Inter({ subsets: ["latin"] });
@@ -26,7 +25,6 @@ export default async function RootLayout({
       <body className={inter.className}>
         <SessionProvider session={session}>
           <div className="mx-auto max-w-5xl text-2xl gap-2 mb-10">
-            <Navbar />
             <ToastProviders>
               {children}
             </ToastProviders>
@@ -36,3 +34,4 @@ export default async function RootLayout({
     </html>
   );
 }
+
